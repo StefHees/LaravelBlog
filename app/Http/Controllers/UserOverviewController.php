@@ -11,10 +11,12 @@ class UserOverviewController extends Controller
     public function index()
     {
         $users = User::all();
-        foreach($users as $user){
-            // Creates an associative array with the username as key and the posts as value
-            $posts[$user->name] = $user->posts->where('user_id', $user->id);
-        }
-        return view('users.index')->with('data', $posts);
+        return view('users.index')->with('users', $users);
+    }
+
+    public function show($id)
+    {
+        $posts = Post::orderBy('created_at', 'desc')->where('user_id', $id)->paginate(10);
+        return view('users.overview')->with('posts', $posts);
     }
 }

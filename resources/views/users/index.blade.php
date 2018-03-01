@@ -2,24 +2,23 @@
 @section('content')
     <h1 class="my-4">Users Overview</h1>
     
-    @if(count($data)>0)
+    @if(count($users)>0)
         <div class="row">
-        @foreach($data as $key => $value)
+        @foreach($users as $user)
         <div class="col-4">
             <!-- Blog Post -->
             <div class="card mb-4">
                 <img class="card-img-top" src="" alt="Card image cap">
                 <div class="card-body">
-                    <h2 class="card-title">{{$key}}</h2>
+                    <h2 class="card-title">{{$user->name}}</h2>
                     <h3>Recent Posts</h3>
-                    @foreach($value as $sval)
-                <h4 class="card-text"><a href="/posts/{{$sval->id}}">{{$sval->title}}</a></h4>
-                <div class="text-muted">Written on {{$sval->created_at}}</div>
+                    @foreach($user->posts as $post)
+                        <h4 class="card-text"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h4>
+                        <div class="text-muted">Written on {{$post->created_at}}</div>
                     @endforeach
-                
                 </div>
                 <div class="card-footer text-muted">
-                    <a href="/users/" class="btn btn-primary">Check out their blog!</a>
+                    <a href="/users/{{$user->id}}" class="btn btn-primary">Check out their blog!</a>
                 </div>
             </div>
         </div>
