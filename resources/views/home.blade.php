@@ -13,7 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="/posts/create" class="btn btn-primary">Create Post</a>
+                    <nav class="navbar navbar-inverse" style="background-color: #dbdbdb;border-radius:3px;">
+                        <a href="/posts/create" class="btn btn-primary">Create Post</a>
+                    </nav>
                     <h3>Your Blog Posts</h3>
                     <table class="table table-striped">
                         <tr>
@@ -28,6 +30,16 @@
                                 <th><a href="/posts/{{$post->id}}/delete" class="btn btn-danger">Delete</a></th>
                             </tr>
                         @endforeach
+                        @forelse($posts as $post)
+                        @empty
+                            <tr>
+                                <td>No posts found.</td>
+                            </tr>
+                        @endforelse
+                            
+
+                        
+
                     </table>
                 </div>
             </div>

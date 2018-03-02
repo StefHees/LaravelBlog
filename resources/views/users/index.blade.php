@@ -8,7 +8,7 @@
         <div class="col-4">
             <!-- Blog Post -->
             <div class="card mb-4">
-                <img class="card-img-top" src="" alt="Card image cap">
+                <img class="card-img-top" src="/storage/profile_images/{{$user->profile_image}}" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">{{$user->name}}</h2>
                     <h3>Recent Posts</h3>
